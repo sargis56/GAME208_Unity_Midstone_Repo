@@ -7,6 +7,8 @@ public class CollisionScript : MonoBehaviour
     BoxCollider boxCollision;
     public float potionHealth;
 
+    public GameController gameControllerScript;
+
     void Start()
     {
         boxCollision = GetComponent<BoxCollider>();
@@ -18,6 +20,7 @@ public class CollisionScript : MonoBehaviour
         {
             PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
             playerScript.addHealth(potionHealth);
+
             Destroy(gameObject);
         }
     }

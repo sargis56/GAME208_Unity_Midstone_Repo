@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-        rb.MovePosition(transform.position + movement * Time.deltaTime * speed);
+        rb.velocity = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);
+        //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        //rb.MovePosition(transform.position + movement * Time.deltaTime * speed);
     }
 
     void FixedUpdate()
