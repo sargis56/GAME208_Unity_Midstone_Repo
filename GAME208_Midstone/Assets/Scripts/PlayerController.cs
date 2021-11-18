@@ -29,4 +29,12 @@ public class PlayerController : MonoBehaviour
     {
 
     }
+    public void addHealth(float health_)
+    {
+        health = health + health_;
+        if (health > 100)
+        {
+            health = 100;
+        }
+    }
 }
