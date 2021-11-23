@@ -5,8 +5,8 @@ using UnityEngine;
 public class DoorCollisionScript : MonoBehaviour
 {
     BoxCollider boxCollision;
-    public Vector3 inputedPos;
-
+    public Vector3 doorDirection;
+    public Vector3 cameraDirection;
     public GameController gameControllerScript;
     public Camera playerCamera;
 
@@ -20,12 +20,12 @@ public class DoorCollisionScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
-            Vector3 newPos = playerScript.transform.position;
-            newPos.z = newPos.z + 100;
+            Vector3 newPosPlayer = playerScript.transform.position;
+            newPosPlayer = newPosPlayer + doorDirection;
             Vector3 newPosCamera = playerCamera.transform.position;
-            newPosCamera.z = newPosCamera.z + 250;
+            newPosCamera = newPosCamera + cameraDirection;
             playerCamera.transform.position = newPosCamera;
-            playerScript.movePlayer(newPos);
+            playerScript.movePlayer(newPosPlayer);
         }
     }
 }
