@@ -37,4 +37,8 @@ public class PlayerController : MonoBehaviour
             health = 100;
         }
     }
+    public void movePlayer(Vector3 pos_)
+    {
+        transform.position = pos_;
+    }
 }

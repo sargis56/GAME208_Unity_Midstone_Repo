@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionScript : MonoBehaviour
+public class DoorCollisionScript : MonoBehaviour
 {
     BoxCollider boxCollision;
-    public float potionHealth;
+    public Vector3 inputedPos;
 
     public GameController gameControllerScript;
+    public Camera playerCamera;
 
     void Start()
     {
@@ -19,9 +20,12 @@ public class CollisionScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
-            playerScript.addHealth(potionHealth);
-
-            Destroy(gameObject);
+            Vector3 newPos = playerScript.transform.position;
+            newPos.z = newPos.z + 100;
+            Vector3 newPosCamera = playerCamera.transform.position;
+            newPosCamera.z = newPosCamera.z + 250;
+            playerCamera.transform.position = newPosCamera;
+            playerScript.movePlayer(newPos);
         }
     }
 }
