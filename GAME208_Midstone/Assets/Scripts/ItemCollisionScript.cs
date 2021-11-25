@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemCollisionScript : MonoBehaviour
 {
     BoxCollider boxCollision;
-    public float potionHealth;
+    public int potionHealth;
 
     public GameController gameControllerScript;
 

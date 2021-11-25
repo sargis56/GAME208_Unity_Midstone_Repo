@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float health = 100;
+    public int maxhealth = 10;
+    public int currentHealth;
+
+    public HealthBar healthBar;
     public float speed = 25;
+
     private Rigidbody rb;
     private Vector2 mousePos;
 
@@ -13,6 +18,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        currentHealth = maxhealth;
+        healthBar.SetMaxHealth(maxhealth);
     }
 
     void Update()
@@ -38,14 +46,22 @@ public class PlayerController : MonoBehaviour
     {
 
     }
-    public void addHealth(float health_)
+    public void addHealth(int health_)
     {
-        health = health + health_;
-        if (health > 100)
+        currentHealth = currentHealth + health_;
+        if (currentHealth > 100)
         {
-            health = 100;
+            currentHealth = 100;
         }
     }
+
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        healthBar.SetHealth(currentHealth);
+    }
+
     public void movePlayer(Vector3 pos_)
     {
         transform.position = pos_;
