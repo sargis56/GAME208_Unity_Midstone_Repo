@@ -19,8 +19,6 @@ public class GameController : MonoBehaviour
     public List<GameObject> overGameObjects = new List<GameObject>();
     public List<GameObject> underGameObjects = new List<GameObject>();
 
-    public GameObject emptyObject;
-
     // Start is called before the first frame update
     void Start()
     {
