@@ -26,7 +26,7 @@ public class ProjectileDynamic : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
-            playerScript.addHealth(-30);
+            playerScript.TakeDamage(3);
         }
         transform.position = mainEnemy.transform.position;
         Vector3 normalizedDirection = new Vector3(player.transform.position.x - transform.position.x, 1, player.transform.position.z - transform.position.z);

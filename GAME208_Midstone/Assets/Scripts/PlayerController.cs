@@ -53,9 +53,10 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = 100;
         }
+        healthBar.SetHealth(currentHealth);
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
