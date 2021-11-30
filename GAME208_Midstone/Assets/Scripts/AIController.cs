@@ -30,13 +30,15 @@ public class AIController : MonoBehaviour
 
         Vector3 lookPostion = agent.destination - transform.position;
         lookPostion.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(lookPostion);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 20) * Quaternion.Euler(-90, 1, 1);
+        if (lookPostion.x != 0 || lookPostion.y != 0)
+        {
+            Quaternion rotation = Quaternion.LookRotation(lookPostion);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 20) * Quaternion.Euler(-90, 1, 1);
+        }
     }
-
-    void OnDrawGizmosSelected ()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
-    }
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, lookRadius);
+        }
 }
