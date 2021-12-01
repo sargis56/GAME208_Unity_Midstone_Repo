@@ -1636,7 +1636,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 10
   m_OnValueChanged:
@@ -2258,6 +2258,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Demon
       objectReference: {fileID: 0}
+    - target: {fileID: 3806909404477636899, guid: 301ee1538ab8bcd49a0a1e8e36ca68d3, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041332225923941192, guid: 301ee1538ab8bcd49a0a1e8e36ca68d3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4584395325448100761, guid: 301ee1538ab8bcd49a0a1e8e36ca68d3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2434,7 +2442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8972339801873692558, guid: 6e2e9528c9e178d48abf9ad0993c7f26, type: 3}
       propertyPath: m_TagString
-      value: Overworld
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e2e9528c9e178d48abf9ad0993c7f26, type: 3}
@@ -2448,6 +2456,14 @@ PrefabInstance:
     - target: {fileID: 8627343568417993224, guid: 16d395bf2fca53248a30fed378ba3b2a, type: 3}
       propertyPath: m_Name
       value: Rat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8627343568417993224, guid: 16d395bf2fca53248a30fed378ba3b2a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897725922873874310, guid: 16d395bf2fca53248a30fed378ba3b2a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9003166145502406834, guid: 16d395bf2fca53248a30fed378ba3b2a, type: 3}
       propertyPath: m_RootOrder

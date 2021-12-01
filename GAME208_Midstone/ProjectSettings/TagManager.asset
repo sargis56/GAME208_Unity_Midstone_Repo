@@ -7,6 +7,7 @@ TagManager:
   - Overworld
   - Underworld
   - Transformable
+  - Enemy
   layers:
   - Default
   - TransparentFX
