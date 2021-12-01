@@ -9,6 +9,10 @@ public class ButtonScript : MonoBehaviour
     public GameObject ExitButton;
     public GameObject Background;
     public GameObject Title;
+    public GameObject PlayButton;
+    public GameObject TitleDeath;
+    public GameObject ReturnButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,18 @@ public class ButtonScript : MonoBehaviour
         Background.SetActive(false);
         Title.SetActive(false);
         Time.timeScale = 1;
+    }
+    public void onClickReturn()
+    {
+        gameObject.SetActive(true);
+        Healthbar.SetActive(false);
+        ExitButton.SetActive(true);
+        Background.SetActive(true);
+        PlayButton.SetActive(true);
+        Title.SetActive(true);
+        TitleDeath.SetActive(false);
+        ReturnButton.SetActive(false);
+        Time.timeScale = 0;
     }
     public void onClickExit()
     {
