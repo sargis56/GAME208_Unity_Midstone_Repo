@@ -21,6 +21,8 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = Quaternion.Euler(-90, 1, 1);
+
         float distance = Vector3.Distance(target.position, transform.position);
 
         if (distance <= lookRadius)

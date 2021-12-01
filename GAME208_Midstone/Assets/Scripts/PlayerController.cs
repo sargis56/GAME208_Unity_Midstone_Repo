@@ -56,10 +56,11 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
-    void OnTriggerEnter2D(Collider2D _collision)
+    void OnTriggerEnter(Collider _collision)
     {
 
-        if (_collision.gameObject.tag == "Enemy") //collision with enemymicrobot
+        //if (_collision.gameObject.tag == "Enemy") //collision with enemymicrobot
+        if (_collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             TakeDamage(10);
 
