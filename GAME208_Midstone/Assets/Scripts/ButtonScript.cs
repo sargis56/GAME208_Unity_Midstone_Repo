@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
@@ -42,6 +43,19 @@ public class ButtonScript : MonoBehaviour
         Title.SetActive(true);
         TitleDeath.SetActive(false);
         ReturnButton.SetActive(false);
+        Time.timeScale = 0;
+        SceneManager.LoadScene("SampleScene");
+    }
+    public void toggleDeath()
+    {
+        gameObject.SetActive(true);
+        Healthbar.SetActive(false);
+        ExitButton.SetActive(false);
+        Background.SetActive(true);
+        PlayButton.SetActive(false);
+        Title.SetActive(false);
+        TitleDeath.SetActive(true);
+        ReturnButton.SetActive(true);
         Time.timeScale = 0;
     }
     public void onClickExit()

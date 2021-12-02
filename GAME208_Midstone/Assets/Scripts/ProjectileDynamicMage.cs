@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileDynamic : MonoBehaviour
+public class ProjectileDynamicMage : MonoBehaviour
 {
     public Rigidbody projectile;
     public GameObject player;
@@ -11,15 +11,14 @@ public class ProjectileDynamic : MonoBehaviour
     void Start()
     {
         projectile.useGravity = false;
-        Vector3 normalizedDirection = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
-        normalizedDirection = normalizedDirection.normalized;
-        projectile.velocity = normalizedDirection * 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 normalizedDirection = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
+        normalizedDirection = normalizedDirection.normalized;
+        projectile.velocity = normalizedDirection * 100;
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -29,8 +28,5 @@ public class ProjectileDynamic : MonoBehaviour
             playerScript.TakeDamage(3);
         }
         transform.position = mainEnemy.transform.position;
-        Vector3 normalizedDirection = new Vector3(player.transform.position.x - transform.position.x, 1, player.transform.position.z - transform.position.z);
-        normalizedDirection = normalizedDirection.normalized;
-        projectile.velocity = normalizedDirection * 100;
     }
 }

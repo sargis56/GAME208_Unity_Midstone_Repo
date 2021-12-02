@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector2 mousePos;
 
+    public ButtonScript UIScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +74,10 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0)
+        {
+            UIScript.toggleDeath();
+        }
     }
 
     public void movePlayer(Vector3 pos_)
