@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector2 mousePos;
 
+    public BoxCollider damageBox;
+
     public ButtonScript UIScript;
 
     // Start is called before the first frame update
@@ -58,6 +60,11 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+    public void increaseSpeed(int speedIncrease_)
+    {
+        speed = speed + speedIncrease_;
+    }
+
     void OnTriggerEnter(Collider _collision)
     {
 
@@ -84,4 +91,19 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = pos_;
     }
+
+    //void OnCollisionEnter(Collision collision)
+    //{
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    Debug.Log(Input.mousePosition);
+        //}
+        //if (collision.gameObject.tag == "Player")
+        //{
+        //    PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
+        //    playerScript.addHealth(potionHealth);
+
+        //    Destroy(gameObject);
+        //}
+    //}
 }

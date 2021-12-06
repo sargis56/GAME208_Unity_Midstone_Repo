@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCollisionScript : MonoBehaviour
+public class ItemCollisionScriptHealth : MonoBehaviour
 {
     BoxCollider boxCollision;
     public int potionHealth;
