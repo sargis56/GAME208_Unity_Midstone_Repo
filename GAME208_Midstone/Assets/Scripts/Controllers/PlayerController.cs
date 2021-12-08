@@ -17,10 +17,13 @@ public class PlayerController : MonoBehaviour
     public BoxCollider damageBox;
 
     public ButtonScript UIScript;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         rb = GetComponent<Rigidbody>();
 
         currentHealth = maxhealth;
@@ -43,7 +46,50 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);
 
         //For rotating the player
-        transform.rotation = Quaternion.Euler(new Vector3(-90.0f, -twoPointAngle, -90));
+        transform.rotation = Quaternion.Euler(new Vector3(-90.0f, -twoPointAngle, 90));
+
+        if ( (Input.GetKeyDown(KeyCode.W)) || (Input.GetKeyDown(KeyCode.S)) )
+        {
+            animator.SetInteger("run", 1);
+        }
+
+        if ((Input.GetKeyUp(KeyCode.W)) || (Input.GetKeyUp(KeyCode.S)))
+        {
+            animator.SetInteger("run", 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            animator.SetInteger("strafeL", 1);
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            animator.SetInteger("strafeL", 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            animator.SetInteger("strafeR", 1);
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            animator.SetInteger("strafeR", 0);
+        }
+
+        if (Input.GetKeyDown("space"))
+        {
+            animator.SetTrigger("Jump");
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            animator.SetTrigger("Attack1");
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            animator.SetTrigger("Attack2");
+        }
     }
 
     void FixedUpdate()
