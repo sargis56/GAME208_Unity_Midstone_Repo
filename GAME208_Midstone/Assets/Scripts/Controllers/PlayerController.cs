@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private Vector2 mousePos;
+    public bool attacking;
 
     public BoxCollider damageBox;
 
@@ -90,6 +90,16 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Attack2");
         }
+
+        if ((this.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")) || (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")))
+        {
+            attacking = true;
+        }
+        else
+        {
+            attacking = false;
+        }
+
     }
 
     void FixedUpdate()
@@ -111,11 +121,11 @@ public class PlayerController : MonoBehaviour
         speed = speed + speedIncrease_;
     }
 
-    void OnTriggerEnter(Collider _collision)
+    void OnCollisionEnter(Collision collision)
     {
 
         //if (_collision.gameObject.tag == "Enemy") //collision with enemymicrobot
-        if (_collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             TakeDamage(10);
 

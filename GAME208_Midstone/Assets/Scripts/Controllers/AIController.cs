@@ -8,12 +8,16 @@ public class AIController : MonoBehaviour
 
     public float lookRadius = 100f;
 
+    public PlayerController playerControllerScript;
+
     Transform target;
     NavMeshAgent agent;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -36,6 +40,15 @@ public class AIController : MonoBehaviour
         {
             Quaternion rotation = Quaternion.LookRotation(lookPostion);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 20) * Quaternion.Euler(-90, 1, 1);
+            try
+            {
+                animator.SetInteger("run", 1);
+            }
+            catch
+            {
+                //Debug.LogError("Oh noses!");
+            }
+            
         }
     }
         void OnDrawGizmosSelected()
@@ -43,4 +56,13 @@ public class AIController : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, lookRadius);
         }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("check");
+        if ((collision.gameObject.tag == "Weapon") && (playerControllerScript.attacking == true))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

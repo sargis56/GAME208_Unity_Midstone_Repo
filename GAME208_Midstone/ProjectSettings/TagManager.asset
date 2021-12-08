@@ -8,6 +8,7 @@ TagManager:
   - Underworld
   - Transformable
   - Enemy
+  - Weapon
   layers:
   - Default
   - TransparentFX
