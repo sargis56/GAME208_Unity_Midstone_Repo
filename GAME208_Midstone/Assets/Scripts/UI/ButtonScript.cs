@@ -12,6 +12,8 @@ public class ButtonScript : MonoBehaviour
     public GameObject Title;
     public GameObject PlayButton;
     public GameObject TitleDeath;
+    public GameObject TitleWin;
+    public GameObject Credits;
     public GameObject ReturnButton;
 
     // Start is called before the first frame update
@@ -31,6 +33,10 @@ public class ButtonScript : MonoBehaviour
         ExitButton.SetActive(false);
         Background.SetActive(false);
         Title.SetActive(false);
+
+        TitleWin.SetActive(false);
+        Credits.SetActive(false);
+
         Time.timeScale = 1;
     }
     public void onClickReturn()
@@ -43,6 +49,10 @@ public class ButtonScript : MonoBehaviour
         Title.SetActive(true);
         TitleDeath.SetActive(false);
         ReturnButton.SetActive(false);
+
+        TitleWin.SetActive(false);
+        Credits.SetActive(false);
+
         Time.timeScale = 0;
         SceneManager.LoadScene("SampleScene");
     }
@@ -56,6 +66,26 @@ public class ButtonScript : MonoBehaviour
         Title.SetActive(false);
         TitleDeath.SetActive(true);
         ReturnButton.SetActive(true);
+
+        TitleWin.SetActive(false);
+        Credits.SetActive(false);
+
+        Time.timeScale = 0;
+    }
+    public void toggleWin()
+    {
+        gameObject.SetActive(true);
+        Healthbar.SetActive(false);
+        ExitButton.SetActive(false);
+        Background.SetActive(true);
+        PlayButton.SetActive(false);
+        Title.SetActive(false);
+        TitleDeath.SetActive(false);
+        ReturnButton.SetActive(true);
+
+        TitleWin.SetActive(true);
+        Credits.SetActive(true);
+
         Time.timeScale = 0;
     }
     public void onClickExit()
