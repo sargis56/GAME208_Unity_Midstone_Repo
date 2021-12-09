@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("impact");
             playSound(hitSound);
-            TakeDamage(1);
+            TakeDamage(3);
         }
     }
 
