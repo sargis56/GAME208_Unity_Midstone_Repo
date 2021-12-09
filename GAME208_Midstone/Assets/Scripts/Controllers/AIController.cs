@@ -59,10 +59,12 @@ public class AIController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("check");
+        //Debug.Log("check");
         if ((collision.gameObject.tag == "Weapon") && (playerControllerScript.attacking == true))
         {
             Destroy(this.gameObject);
         }
     }
+
+
 }

@@ -95,7 +95,7 @@ public class GameController : MonoBehaviour
     {
         foreach (GameObject overObjs in overGameObjects)
         {
-            lock (overGameObjects);
+            lock (overGameObjects)
             try
             {
                 overObjs.SetActive(true);

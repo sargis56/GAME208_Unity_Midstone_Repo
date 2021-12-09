@@ -19,11 +19,19 @@ public class PlayerController : MonoBehaviour
     public ButtonScript UIScript;
     public Animator animator;
 
+    public AudioClip hitSound;
+    public AudioClip swingSound1;
+    public AudioClip swingSound2;
+    public AudioClip teleportSound;
+    AudioSource aSource;
+
+    public GameObject mouseCursor;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-
+        aSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
 
         currentHealth = maxhealth;
@@ -42,6 +50,11 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         //Vertical movement direction
         float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 pos = Input.mousePosition;
+        pos.z = 200;
+        pos = Camera.main.ScreenToWorldPoint(pos);
+        mouseCursor.transform.position = pos;
 
         rb.velocity = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);
 
@@ -79,16 +92,19 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             animator.SetTrigger("Jump");
+            playSound(teleportSound);
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
             animator.SetTrigger("Attack1");
+            playSound(swingSound1);
         }
 
         if (Input.GetButtonDown("Fire2"))
         {
             animator.SetTrigger("Attack2");
+            playSound(swingSound2);
         }
 
         if ((this.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")) || (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")))
@@ -127,8 +143,9 @@ public class PlayerController : MonoBehaviour
         //if (_collision.gameObject.tag == "Enemy") //collision with enemymicrobot
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            TakeDamage(10);
-
+            animator.SetTrigger("impact");
+            playSound(hitSound);
+            TakeDamage(1);
         }
     }
 
@@ -150,16 +167,22 @@ public class PlayerController : MonoBehaviour
 
     //void OnCollisionEnter(Collision collision)
     //{
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    Debug.Log(Input.mousePosition);
-        //}
-        //if (collision.gameObject.tag == "Player")
-        //{
-        //    PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
-        //    playerScript.addHealth(potionHealth);
-
-        //    Destroy(gameObject);
-        //}
+    //if (Input.GetButtonDown("Fire1"))
+    //{
+    //    Debug.Log(Input.mousePosition);
     //}
+    //if (collision.gameObject.tag == "Player")
+    //{
+    //    PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
+    //    playerScript.addHealth(potionHealth);
+
+    //    Destroy(gameObject);
+    //}
+    //}
+
+    void playSound(AudioClip clip)
+    {
+        aSource.clip = clip;
+        aSource.Play();
+    }
 }
