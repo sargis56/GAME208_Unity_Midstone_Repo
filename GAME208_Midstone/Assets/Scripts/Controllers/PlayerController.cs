@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     AudioSource aSource;
 
     public GameObject mouseCursor;
+    public GameObject bombObject;
+    GameObject bomb;
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +90,13 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetInteger("strafeR", 0);
         }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            bomb = (GameObject)Instantiate(bombObject, transform.position, transform.rotation = Quaternion.Euler(0, 90, 0));
+            bomb.GetComponent<BombScript>().bombActive = true;
+        }
+
 
         if (Input.GetKeyDown("space"))
         {
